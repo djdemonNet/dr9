@@ -21,6 +21,7 @@ class DisplayNode extends ControllerBase
   public function content(NodeInterface $node)
   {
     $element = array(
+
       '#markup' => '<h2>This page was created with halp DisplayNode Controller in dummy module</h2>' . $node->body->value,
     );
 
