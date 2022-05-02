@@ -1,0 +1,5 @@
+name: Dummy
+descriptions: Module Dummy by Dimitriy
+type: module
+version: 1.x
+core_version_requirement: ^8.8.0 || ^9 || ^10

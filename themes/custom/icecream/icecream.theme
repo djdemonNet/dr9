@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Preprocess function for node.html.twig.
+ */
+function icecream_preprocess_node(&$variables)
+{
+  // If the current user is logged in, and they are the owner of the node
+  // being viewed, add a suffix to the label variable.
+  if ($variables['logged_in'] == TRUE && $variables['node']->getOwnerId() == $variables['user']->id()) {
+    $variables['label']['#suffix'] = ' [you are the author]';
+  }
+
+  // If the current user is logged in, and they are the owner of the node
+  // being viewed, add a new variable that can be used to identify this in
+  // Twig templates.
+  $variables['current_user_is_owner'] = FALSE;
+  if ($variables['logged_in'] == TRUE && $variables['node']->getOwnerId() == $variables['user']->id()) {
+    $variables['current_user_is_owner'] = TRUE;
+  }
+}

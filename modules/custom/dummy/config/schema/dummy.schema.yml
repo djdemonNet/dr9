@@ -1,0 +1,20 @@
+# Schema for the configuration files of the Dummy module.
+dummy.settings:
+  type: config_object
+  label: 'Dummy settings'
+  mapping:
+    name_administrator:
+      type: string
+      label: 'Name Administrator'
+    sex_administrator:
+      type: radios
+      label: 'Sex administrator'
+    date_birthday_administrator:
+      type: string
+      label: 'Bithday date'
+    favorite_color_administrator:
+      type: string
+      label: 'Favorite Color'
+    email_administrator:
+      type: string
+      label: 'Email'

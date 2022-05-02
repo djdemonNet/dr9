@@ -1,0 +1,8 @@
+# Schema for the configuration files of the Contact Entity module.
+contact_entity.settings:
+  type: config_object
+  label: 'Contact Entity settings'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

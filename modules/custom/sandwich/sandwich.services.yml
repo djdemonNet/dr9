@@ -1,0 +1,4 @@
+services:
+  plugin.manager.plugin_messages:
+    class: Drupal\sandwich\PluginMessagesManager
+    parent: default_plugin_manager

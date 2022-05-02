@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+function dummy_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  if ($form_id == 'dummy_settings_dummy') {
+    if (!empty($form['name_administrator'])) {
+      $form['name_administrator']['#attributes']['placeholder'] = 'NAME Admin placheholder';
+      $form['#validate'][] = 'dummy_settings_dummy_validate';
+    }
+    if (!empty($form['email_administrator'])) {
+      $form['email_administrator']['#attributes']['placeholder'] = 'Email Admin placeholder change with help *.module and alter hook';
+    }
+    $form['#submit'][] = 'dummy_settings_dummy_submit';
+  }
+}
+
+/**
+ * Custom validation callback.
+ */
+function dummy_settings_dummy_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state)
+{
+  if (strpos($form_state->getValue('name_administrator'), 'Dmitriy') === FALSE) {
+    $form_state->setErrorByName('name_administrator', t('My love admin- "Dmitriy".'));
+  }
+}
+
+/**
+ * Custom submit callback.
+ */
+function dummy_settings_dummy_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state)
+{
+  // drupal_set_message is deprecated
+  // drupal_set_message(t('An error occurred and processing did not complete.'));
+
+  \Drupal::messenger()->addStatus(
+    t('Hello ' . $form_state->getValue('name_administrator') . '')
+  );
+
+}

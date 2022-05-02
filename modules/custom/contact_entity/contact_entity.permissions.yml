@@ -1,0 +1,3 @@
+administer contact entity:
+  title: 'Administer contact entity settings'
+  restrict access: true

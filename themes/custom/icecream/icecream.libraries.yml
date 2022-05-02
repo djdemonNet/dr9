@@ -1,0 +1,19 @@
+rainbow:
+  version: 1.0
+  remote: https://github.com/xoxco/rainbow-text
+  license: MIT
+  js:
+    js/rainbow.js: { }
+  dependencies:
+    - core/jquery
+
+icecream:
+  version: 1.0
+  css:
+    theme:
+      css/fonts.css: { weight: 10 }
+      css/bootstrap.min.css: { weight: 10 }
+  js:
+    js/rainbow-headings.js: { }
+  dependencies:
+    - icecream/rainbow

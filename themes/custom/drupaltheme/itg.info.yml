@@ -1,0 +1,27 @@
+# icecream.info.yml file for Ice Cream example theme.
+name: Ice Cream2
+type: theme
+base theme: classy
+description: 'A great theme for warm summer days.'
+package: Custom
+core_version_requirement: ^8 || ^9
+logo: 'images/logo.png'
+libraries:
+  - icecream/icecream
+
+# Region metadata.
+regions:
+  header: 'Header'
+  content: 'Content'
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu'
+  bread_crumb: 'Bread crumd'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer_first: 'Footer first'
+  footer_second: 'Footer second'
+  hiden_block: 'Hiden block'
+
+
+
+

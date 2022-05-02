@@ -1,0 +1,32 @@
+dummy.index:
+  path: '/dummy/index'
+  defaults:
+    _title: 'General page Dummy module'
+    _controller: '\Drupal\dummy\Controller\DummyController::build'
+  requirements:
+    _permission: 'access site reports'
+dummy.private_page:
+  path: '/dummy/private'
+  defaults:
+    _controller: '\Drupal\dummy\Controller\DummyController::privatePage'
+    _title: 'Private page'
+  requirements:
+    _permission: 'access premium pages'
+dummy.display_node:
+  path: '/dummy/display-node/{node}'
+  defaults:
+    _controller: '\Drupal\dummy\Controller\DisplayNode::content'
+    _title_callback: '\Drupal\dummy\Controller\DisplayNode::getTitle'
+  requirements:
+    _custom_access: '\Drupal\dummy\Controller\DisplayNode::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+dummy.settings_dummy:
+  path: '/admin/config/system/settings-dummy'
+  defaults:
+    _title: 'Settings dummy'
+    _form: 'Drupal\dummy\Form\SettingsDummyForm'
+  requirements:
+    _permission: 'administer site configuration'

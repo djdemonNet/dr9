@@ -1,0 +1,33 @@
+<div class="container">
+	<header role="banner" class="row">
+		{{ page.header }}
+		<div class="col-md-6">
+			{{ page.primary_menu }}
+		</div>
+		<div class="col-md-6">
+			{{ page.secondary_menu }}
+		</div>
+	</header>
+	<main>
+		<div class="row">
+			<div class="content col-md-6">
+				{{ page.help }}
+				{{ page.content }}
+			</div>
+			<aside class="sidebar-first col-md-3">
+				{{ page.sidebar_first }}
+			</aside>
+			<aside class="sidebar-second col-md-3">
+				{{ page.sidebar_second }}
+			</aside>
+		</div>
+	</main>
+	<footer role="container" class="row">
+		<div class="col-md-6">
+			{{ page.footer_first }}
+		</div>
+		<div class="col-md-6">
+			{{ page.footer_second }}
+		</div>
+	</footer>
+</div>

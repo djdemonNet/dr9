@@ -1,0 +1,9 @@
+dummy.settings_dummy_1:
+  title: 'Settings dummy'
+  description: 'Settings dummy'
+  route_name: dummy.settings_dummy
+dummy.settings_dummy_2:
+  title: Settings dummy
+  parent: system.admin_config_system
+  route_name: dummy.settings_dummy
+  weight: 10

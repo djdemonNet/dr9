@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Contact Entity module.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\contact_entity\Entity\ContactEntity;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function contact_entity_theme() {
+  return [
+    'contact_entity' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for contact entity templates.
+ *
+ * Default template: contact-entity.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the contact entity information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_contact_entity(array &$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function contact_entity_user_cancel($edit, UserInterface $account, $method) {
+  switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish contact entities.
+      $storage = \Drupal::entityTypeManager()->getStorage('contact_entity');
+      $contact_entity_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->execute();
+      foreach ($storage->loadMultiple($contact_entity_ids) as $contact_entity) {
+        $contact_entity->set('status', FALSE);
+        $contact_entity->save();
+      }
+      break;
+
+    case 'user_cancel_reassign':
+      // Anonymize contact entities.
+      $storage = \Drupal::entityTypeManager()->getStorage('contact_entity');
+      $contact_entity_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->execute();
+      foreach ($storage->loadMultiple($contact_entity_ids) as $contact_entity) {
+        $contact_entity->setOwnerId(0);
+        $contact_entity->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function contact_entity_user_predelete(UserInterface $account) {
+  // Delete contact entities.
+  $storage = \Drupal::entityTypeManager()->getStorage('contact_entity');
+  $contact_entity_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->execute();
+  $contact_entities = $storage->loadMultiple($contact_entity_ids);
+  $storage->delete($contact_entities);
+}
