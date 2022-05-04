@@ -1,11 +1,12 @@
-name: Examples for Developers
+name: Table Sort Example
 type: module
-description: 'Provides example code for you to learn from.'
+description: 'Demonstrates how to create sortable output in a table.'
 package: Example modules
 core: 8.x
 core_version_requirement: ^8 || ^9
 dependencies:
-  - drupal:toolbar
+  - drupal:node
+  - examples:examples
 
 # Information added by Drupal.org packaging script on 2020-05-27
 version: '3.0.0'

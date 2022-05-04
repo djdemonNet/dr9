@@ -1,11 +1,14 @@
-name: Examples for Developers
-type: module
-description: 'Provides example code for you to learn from.'
+name: Node Type Example
+description: Demonstrates implementing a node content type in a module.
 package: Example modules
+type: module
 core: 8.x
 core_version_requirement: ^8 || ^9
 dependencies:
-  - drupal:toolbar
+  - drupal:node
+  - drupal:path
+  - drupal:text
+  - examples:examples
 
 # Information added by Drupal.org packaging script on 2020-05-27
 version: '3.0.0'

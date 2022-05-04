@@ -1,11 +1,13 @@
-name: Examples for Developers
+name: File Example
 type: module
-description: 'Provides example code for you to learn from.'
+description: Demonstrates using the Drupal File API and stream wrappers.
 package: Example modules
 core: 8.x
 core_version_requirement: ^8 || ^9
 dependencies:
-  - drupal:toolbar
+  - drupal:file
+  - examples:examples
+  - examples:stream_wrapper_example
 
 # Information added by Drupal.org packaging script on 2020-05-27
 version: '3.0.0'
