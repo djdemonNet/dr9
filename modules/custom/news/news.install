@@ -22,55 +22,49 @@ function news_uninstall() {
 /**
  * Implements hook_schema().
  */
-function news_schema() {
-  $schema['news_example'] = [
-    'description' => 'Table description.',
+/**
+ * Implements hook_schema().
+ */
+function news_schema()
+{
+  $schema['news_subs'] = [
+    'description' => 'Newsletter subscriptions',
     'fields' => [
-      'id' => [
-        'type' => 'serial',
-        'not null' => TRUE,
-        'description' => 'Primary Key: Unique record ID.',
-      ],
-      'uid' => [
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-        'description' => 'The {users}.uid of the user who created the record.',
-      ],
-      'status' => [
-        'description' => 'Boolean indicating whether this record is active.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-        'size' => 'tiny',
-      ],
-      'type' => [
-        'type' => 'varchar_ascii',
-        'length' => 64,
+      'first_name' => [
+        'description' => 'First Name',
+        'type' => 'varchar',
+        'length' => 32,
         'not null' => TRUE,
         'default' => '',
-        'description' => 'Type of the record.',
+      ],
+      'last_name' => [
+        'description' => 'Last Name',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'email' => [
+        'description' => 'Email',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
       ],
       'created' => [
+        'description' => 'Created',
         'type' => 'int',
+        'length' => 11,
         'not null' => TRUE,
         'default' => 0,
-        'description' => 'Timestamp when the record was created.',
       ],
-      'data' => [
-        'type' => 'blob',
+      'is_active' => [
+        'description' => 'Is Active?',
+        'type' => 'int',
+        'size' => 'tiny',
+        'default' => 0,
         'not null' => TRUE,
-        'size' => 'big',
-        'description' => 'The arbitrary data for the item.',
       ],
-    ],
-    'primary key' => ['id'],
-    'indexes' => [
-      'type' => ['type'],
-      'uid' => ['uid'],
-      'status' => ['status'],
     ],
   ];
 
